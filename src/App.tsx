@@ -27,9 +27,10 @@ import {
 } from './components'
 import { KnowledgeBase } from './pages/KnowledgeBase'
 import { ArticlePage } from './pages/ArticlePage'
+import { ComponentShowcase } from './pages/ComponentShowcase'
 import { navigationItems, topBarLeftItems, topBarRightItems } from './data/navigation'
 
-type Page = 'components' | 'knowledge-base' | 'article' | 'education'
+type Page = 'components' | 'knowledge-base' | 'article' | 'education' | 'showcase'
 
 // Equifax Logo Component
 const EquifaxLogo = ({ onClick }: { onClick?: () => void }) => (
@@ -106,6 +107,12 @@ function App() {
     )
   }
 
+  if (currentPage === 'showcase') {
+    return (
+      <ComponentShowcase onBack={() => setCurrentPage('components')} />
+    )
+  }
+
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Header with Mega Menu Navigation */}
@@ -122,12 +129,15 @@ function App() {
             A professional React component library built with the Equifax brand identity.
             Enterprise-grade components for building trusted financial applications.
           </p>
-          <HStack spacing={4} className="mt-4">
-            <Button size="lg" onClick={() => setCurrentPage('knowledge-base')}>
-              View Knowledge Base Demo
+          <HStack spacing={4} className="mt-4" wrap>
+            <Button size="lg" onClick={() => setCurrentPage('showcase')}>
+              View Component Showcase
             </Button>
-            <Button variant="outline" size="lg" onClick={() => setCurrentPage('article')}>
-              View Article Page
+            <Button variant="outline" size="lg" onClick={() => setCurrentPage('knowledge-base')}>
+              Knowledge Base Demo
+            </Button>
+            <Button variant="ghost" size="lg" onClick={() => setCurrentPage('article')}>
+              Article Page
             </Button>
           </HStack>
         </VStack>
@@ -448,7 +458,24 @@ function App() {
           <h2 className="text-2xl font-bold text-neutral-900 mb-6">
             Page Templates
           </h2>
-          <Grid cols={1} colsMd={2} gap={6}>
+          <Grid cols={1} colsMd={3} gap={6}>
+            <Card
+              className="cursor-pointer hover:shadow-lg transition-shadow border-2 border-primary-200"
+              onClick={() => setCurrentPage('showcase')}
+            >
+              <div className="aspect-video bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 rounded-t-lg flex items-center justify-center">
+                <svg className="w-16 h-16 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </div>
+              <CardHeader
+                title="Component Showcase"
+                subtitle="20+ Untitled UI-style components themed with Equifax colors"
+              />
+              <div className="px-4 pb-4">
+                <Badge variant="gold" size="sm">Featured</Badge>
+              </div>
+            </Card>
             <Card
               className="cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setCurrentPage('knowledge-base')}
