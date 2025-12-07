@@ -359,14 +359,14 @@ export function ArticlePage({ onBack }: ArticlePageProps) {
           <HStack justify="center" spacing={4}>
             <Button
               size="lg"
-              className="bg-white text-primary-500 hover:bg-primary-50"
+              className="!bg-white !text-primary-500 hover:!bg-primary-50"
             >
               Get Started Free
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-primary-600"
+              className="!border-white !text-white hover:!bg-primary-600"
             >
               Learn More
             </Button>

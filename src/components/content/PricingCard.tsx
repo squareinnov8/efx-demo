@@ -102,15 +102,16 @@ export function PricingCard({
         ${className}
       `}
     >
-      {popular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className={`inline-flex px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full ${colors.badge}`}>
-            Most Popular
-          </span>
-        </div>
-      )}
-
       <div className="p-6 pb-4">
+        {/* Most Popular Badge */}
+        {popular && (
+          <div className="mb-4">
+            <span className="inline-flex px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full bg-primary-500 text-white">
+              Most Popular
+            </span>
+          </div>
+        )}
+
         {/* Icon */}
         <div className={`inline-flex p-3 rounded-lg bg-neutral-50 ${colors.icon} mb-4`}>
           {displayIcon}
